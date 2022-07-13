@@ -1,0 +1,19 @@
+pipeline {
+	agent any
+
+stages {
+	stage(create) {
+	            steps{
+			    withKubeConfig([credentialsId: 'kubeconfig',
+					    serverUrl: 'https://192.168.49.2:8443',
+					    contextName: 'minikube',
+					    clusterName: 'minikube',
+					    namespace: 'default'
+					    ])
+				{
+			      sh 'kubectl apply -f tomcat.yaml'
+			      }
+			 }
+	    }
+  	}
+}
