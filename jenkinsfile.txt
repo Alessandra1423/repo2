@@ -12,6 +12,7 @@ stages {
 					    ])
 				{
 			      sh 'kubectl apply -f index-html-configmap.yaml'
+			      sh 'kubectl apply -f nginx.yaml'
 			      }
 			 }
 	    }
