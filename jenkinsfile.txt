@@ -11,7 +11,7 @@ stages {
 					    namespace: 'default'
 					    ])
 				{
-			      sh 'kubectl apply -f tomcat.yaml'
+			      sh 'kubectl apply -f index-html-configmap.yaml'
 			      }
 			 }
 	    }
