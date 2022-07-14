@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 stages {
-	stage(create configmap) {
+	stage('Build') {
 	            steps{
 			    withKubeConfig([credentialsId: 'kubeconfig',
 					    serverUrl: 'https://192.168.49.2:8443',
@@ -12,13 +12,10 @@ stages {
 					    ])
 				{
 			      sh 'kubectl apply -f index-html-configmap.yaml'
-			      
 			      }
 			 }
 	    }
-  	}
-stages {
-	stage(create deployment) {
+		stage('Create') {
 	            steps{
 			    withKubeConfig([credentialsId: 'kubeconfig',
 					    serverUrl: 'https://192.168.49.2:8443',
@@ -27,7 +24,6 @@ stages {
 					    namespace: 'default'
 					    ])
 				{
-			      
 			      sh 'kubectl create -f nginx.yaml'
 			      }
 			 }
