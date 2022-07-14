@@ -28,7 +28,7 @@ stages {
 					    ])
 				{
 			      
-			      sh 'kubectl apply -f nginx.yaml'
+			      sh 'kubectl create -f nginx.yaml'
 			      }
 			 }
 	    }
